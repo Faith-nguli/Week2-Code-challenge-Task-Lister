@@ -1,37 +1,288 @@
+/* Updated Modern CV-Inspired Styling */
+:root {
+  --primary-color: #2c3e50;       /* Dark Navy */
+  --secondary-color: #34495e;     /* Deep Slate */
+  --accent-color: #3498db;        /* Bright Blue */
+  --light-gray: #ecf0f1;          /* Light Gray */
+  --dark-gray: #7f8c8d;           /* Muted Gray */
+  --success-color: #27ae60;       /* Success Green */
+  --warning-color: #f39c12;       /* Warning Yellow */
+  --danger-color: #e74c3c;        /* Danger Red */
+}
+
 html {
   height: 100%;
   width: 100%;
-  font-family: "Titillium Web", sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
 }
 
 body {
   min-height: 100%;
-  min-width: 100%;
-  background: linear-gradient(pink, violet);
-}
-
-button {
-  font-size: 7px;
+  margin: 0;
+  padding: 0;
+  background-color: #1e2a47; /* Slightly lighter navy */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3rem;
+  box-sizing: border-box;
 }
 
 #main-content {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  border: 1px solid #333;
-  background: rgba(255, 255, 255, 0.3);
-  padding: 15px 20px 18px 18px;
-  border-radius: 5px;
-  box-shadow: 2px 5px 5px #333;
+  width: 100%;
+  max-width: 900px; /* Wider content area */
+  background: #F4F6F9; /* Light gray background */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* Larger, softer shadow */
+  border-radius: 12px; /* More rounded corners */
+  overflow: hidden;
+  margin: 2rem 0;
+  padding: 2rem;
 }
 
+.header {
+  background: var(--primary-color);
+  color: white;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 12px 12px 0 0; /* Rounded top corners */
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2.5rem; /* Larger heading */
+  font-weight: 700; /* Bolder font */
+}
+
+.content-section {
+  padding: 2rem;
+}
+
+/* Form Styling */
+#create-task-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem; /* Increased spacing */
+}
+
+.form-group.full-width {
+  grid-column: span 2;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--secondary-color);
+  font-size: 1rem; /* Slightly larger font for labels */
+}
+
+input[type="text"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 8px; 
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="date"]:focus,
+select:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.2); 
+}
+
+input[type="submit"] {
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 50px; 
+  cursor: pointer;
+  font-size: 1.2rem; 
+  font-weight: 600;
+  transition: background 0.3s ease;
+  grid-column: span 2;
+  justify-self: center;
+  width: 50%;
+}
+
+input[type="submit"]:hover {
+  background: #2980b9;
+  transform: scale(1.05);
+}
+
+/* Task List Styling */
 #list {
-  margin: 10px;
-  border: 1px solid #333;
-  background: rgba(255, 255, 255, 0.75);
-  padding: 15px 20px 18px 18px;
-  border-radius: 5px;
-  box-shadow: 2px 5px 5px #333;
+  background: var(--light-gray);
+  padding: 2rem;
+  border-radius: 12px; /* Rounded corners for the list */
+  margin-top: 2rem;
+}
+
+#list h2 {
+  margin-top: 0;
+  color: var(--primary-color);
+  border-bottom: 3px solid var(--primary-color); /* Thicker border */
+  padding-bottom: 1rem;
+  font-size: 2rem; /* Larger header */
+}
+
+#tasks {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#tasks li {
+  background: white;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px; /* More rounded task items */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1); /* Larger, softer shadow */
+  transition: transform 0.2s ease;
+}
+
+#tasks li:hover {
+  transform: translateY(-5px); /* Slight lift effect on hover */
+}
+
+.task-content {
+  flex-grow: 1;
+}
+
+.task-priority {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-left: 0.23rem;
+}
+
+.high-priority .task-priority {
+  background: var(--danger-color);
+  color: white;
+}
+
+.medium-priority .task-priority {
+  background: var(--warning-color);
+  color: white;
+}
+
+.low-priority .task-priority {
+  background: var(--success-color);
+  color: white;
+}
+
+.task-due-date {
+  font-size: 1rem; /* Larger text for date */
+  color: var(--dark-gray);
+  margin-top: 0.5rem;
+}
+
+button.delete-btn {
+  background: var(--danger-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+button.delete-btn:hover {
+  background: black;
+  transform: scale(1.05); /* Hover scale effect */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #create-task-form {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-group.full-width,
+  input[type="submit"] {
+    grid-column: span 1;
+  }
+  
+  input[type="submit"] {
+    width: 100%;
+  }
+  
+  body {
+    padding: 1.5rem;
+  }
+  
+  .header {
+    padding: 2rem;
+  }
+  
+  .content-section {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #tasks li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  
+  .task-actions {
+    align-self: flex-end;
+  }
+}
+
+/* Add these styles to your existing CSS */
+select, input[type="date"] {
+  background-color: #ffffff;
+  color: #2c3e50; /* Dark text color */
+  border: 1px solid #ced4da;
+  padding: 0.8rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  appearance: none; /* Removes default system styling */
+  -webkit-appearance: none;
+}
+
+/* Style the dropdown arrow */
+select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%232c3e50'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  background-size: 1rem;
+  padding-right: 2.5rem; /* Make room for arrow */
+}
+
+/* Style the date picker dropdown */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0.5); /* Makes the icon visible */
+  padding-left: 0.5rem;
+}
+
+/* Focus states */
+select:focus, input[type="date"]:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
 }
